@@ -2,6 +2,7 @@ package detectlanguage
 
 import "fmt"
 
+// APIError is an error returned from the API
 type APIError struct {
 	// Status is the HTTP text status of the response.
 	Status string
@@ -24,6 +25,7 @@ type apiErrorResponse struct {
 	Error *APIError `json:"error,omitempty"`
 }
 
+// DetectionError is retuned when detection fails
 type DetectionError struct {
 	Message string
 }
