@@ -3,6 +3,7 @@ Language Detection API Go Client
 
 [![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/detectlanguage/detectlanguage-go)
 [![Build Status](https://secure.travis-ci.org/detectlanguage/detectlanguage-go.svg)](http://travis-ci.org/detectlanguage/detectlanguage-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/detectlanguage/detectlanguage-go)](https://goreportcard.com/report/github.com/detectlanguage/detectlanguage-go)
 
 Detects language of the given text. Returns detected language codes and scores.
 
