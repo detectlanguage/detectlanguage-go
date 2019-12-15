@@ -1,10 +1,10 @@
 Detect Language API Go Client
 ========
 
+[![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/detectlanguage/detectlanguage-go)
 [![Build Status](https://secure.travis-ci.org/detectlanguage/detectlanguage-go.svg)](http://travis-ci.org/detectlanguage/detectlanguage-go)
 
-
-Detects language of given text. Returns detected language codes and scores.
+Detects language of the given text. Returns detected language codes and scores.
 
 Before using Detect Language API client you have to setup your personal API key.
 You can get it by signing up at https://detectlanguage.com
