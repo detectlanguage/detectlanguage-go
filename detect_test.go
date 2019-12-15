@@ -34,3 +34,13 @@ func TestDetectCodeFailure(t *testing.T) {
 	assert.EqualError(t, err, "Language not detected")
 	assert.Equal(t, code, "")
 }
+
+func TestDetectBatch(t *testing.T) {
+	query := []string{"labas rytas", "good morning"}
+	detections, err := client.DetectBatch(query)
+
+	if assert.NoError(t, err) {
+		assert.Equal(t, detections[0][0].Language, "lt")
+		assert.Equal(t, detections[1][0].Language, "en")
+	}
+}
