@@ -114,4 +114,4 @@ fmt.Fprintln(os.Stdout, "First language name:", languages[0].Name)
 
 ## License
 
-Detect Language API Client is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
+Detect Language API Go Client is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
