@@ -122,11 +122,3 @@ func (c *Client) get(ctx context.Context, path string, out interface{}) error {
 func (c *Client) post(ctx context.Context, path string, in, out interface{}) error {
 	return c.do(ctx, http.MethodPost, path, in, out)
 }
-
-func (c *Client) put(ctx context.Context, path string, in, out interface{}) error {
-	return c.do(ctx, http.MethodPut, path, in, out)
-}
-
-func (c *Client) del(ctx context.Context, path string) error {
-	return c.do(ctx, http.MethodDelete, path, nil, nil)
-}
