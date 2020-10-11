@@ -1,4 +1,4 @@
-Language Detection API Go Client
+Detect Language API Go Client
 ========
 
 [![GoDoc](http://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/detectlanguage/detectlanguage-go)
