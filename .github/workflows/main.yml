@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         go-version:
-          - "1.12"
+          - "1.14"
           - "1.17"
           - "1.18"
     name: Go ${{ matrix.go-version }} sample
