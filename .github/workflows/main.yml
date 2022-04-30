@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
         with:
-          node-version: ${{ matrix.go-version }}
+          go-version: ${{ matrix.go-version }}
           check-latest: true
       - env:
           DETECTLANGUAGE_API_KEY: ${{ secrets.DETECTLANGUAGE_API_KEY }}
