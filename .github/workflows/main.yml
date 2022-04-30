@@ -1,0 +1,22 @@
+name: Build
+on: [push,pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version:
+          - "1.9"
+          - "1.12"
+          - "1.17"
+          - "1.18"
+    name: Go ${{ matrix.go-version }} sample
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          node-version: ${{ matrix.go-version }}
+          check-latest: true
+      - env:
+          DETECTLANGUAGE_API_KEY: ${{ secrets.DETECTLANGUAGE_API_KEY }}
+        run: go test
