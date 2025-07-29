@@ -13,7 +13,7 @@ You can get it by signing up at https://detectlanguage.com
 ## Installation
 
 ```
-go get -u github.com/detectlanguage/detectlanguage-go@v1.0.1
+go get -u github.com/detectlanguage/detectlanguage-go@v2.0.0
 ```
 
 ### Configuration

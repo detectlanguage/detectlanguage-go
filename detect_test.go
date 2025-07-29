@@ -11,8 +11,7 @@ func TestDetect(t *testing.T) {
 
 	if assert.NoError(t, err) {
 		assert.Equal(t, "lt", detections[0].Language)
-		assert.True(t, detections[0].Reliable)
-		assert.Greater(t, detections[0].Confidence, float32(0))
+		assert.Greater(t, detections[0].Score, float64(0))
 	}
 }
 
@@ -25,7 +24,7 @@ func TestDetectCode(t *testing.T) {
 }
 
 func TestDetectCodeFailure(t *testing.T) {
-	code, err := client.DetectCode("")
+	code, err := client.DetectCode(" ")
 
 	assert.EqualError(t, err, "Language not detected")
 	assert.Equal(t, code, "")

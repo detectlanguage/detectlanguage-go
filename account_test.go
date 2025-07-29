@@ -6,8 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestUserStatus(t *testing.T) {
-	response, err := client.UserStatus()
+func TestAccountStatus(t *testing.T) {
+	response, err := client.AccountStatus()
 
 	if assert.NoError(t, err) {
 		assert.NotEmpty(t, response.Date)

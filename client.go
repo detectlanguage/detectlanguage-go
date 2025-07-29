@@ -5,7 +5,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 	"time"
@@ -16,7 +15,7 @@ const defaultUserAgent = "detectlanguage-go/" + Version
 const defaultTimeout = 10 * time.Second
 
 var apiBaseURL = &url.URL{
-	Scheme: "https", Host: "ws.detectlanguage.com", Path: "/0.2/",
+	Scheme: "https", Host: "ws.detectlanguage.com", Path: "/v3/",
 }
 
 // A Client provides an HTTP client for DetectLanguage API operations.
@@ -70,9 +69,9 @@ func (c *Client) setBody(req *http.Request, in interface{}) error {
 		if err != nil {
 			return err
 		}
-		req.Body = ioutil.NopCloser(bytes.NewReader(buf))
+		req.Body = io.NopCloser(bytes.NewReader(buf))
 		req.GetBody = func() (io.ReadCloser, error) {
-			return ioutil.NopCloser(bytes.NewReader(buf)), nil
+			return io.NopCloser(bytes.NewReader(buf)), nil
 		}
 		req.Header.Set("Content-Type", "application/json")
 		req.ContentLength = int64(len(buf))
@@ -107,7 +106,7 @@ func (c *Client) do(ctx context.Context, method, path string, in, out interface{
 		return nil
 	}
 
-	buf, _ := ioutil.ReadAll(res.Body)
+	buf, _ := io.ReadAll(res.Body)
 	apiErr := &APIError{Status: res.Status, StatusCode: res.StatusCode}
 	if json.Unmarshal(buf, &apiErrorResponse{Error: apiErr}) != nil {
 		apiErr.Message = string(buf)
