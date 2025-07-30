@@ -1,7 +1,9 @@
 package detectlanguage
 
-// UserStatusResponse is the resource containing account status information
-type UserStatusResponse struct {
+import "context"
+
+// AccountStatusResponse is the resource containing account status information
+type AccountStatusResponse struct {
 	Date               string `json:"date,omitempty"`
 	Requests           int    `json:"requests"`
 	Bytes              int    `json:"bytes"`
@@ -12,8 +14,8 @@ type UserStatusResponse struct {
 	Status             string `json:"status"`
 }
 
-// UserStatus fetches account status
-func (c *Client) UserStatus() (out *UserStatusResponse, err error) {
-	err = c.get(nil, "user/status", &out)
+// AccountStatus fetches account status
+func (c *Client) AccountStatus(ctx context.Context) (out *AccountStatusResponse, err error) {
+	err = c.get(ctx, "account/status", &out)
 	return
 }

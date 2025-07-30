@@ -13,13 +13,13 @@ You can get it by signing up at https://detectlanguage.com
 ## Installation
 
 ```
-go get -u github.com/detectlanguage/detectlanguage-go@v1.0.1
+go get -u github.com/detectlanguage/detectlanguage-go@v2.0.0
 ```
 
 ### Configuration
 
 ```go
-client := detectlanguage.New("YOUR API KEY")
+dl := detectlanguage.New("YOUR API KEY")
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ client := detectlanguage.New("YOUR API KEY")
 ### Language detection
 
 ```go
-detections, err := client.Detect("Buenos dias señor")
+detections, err := dl.Detect(context.TODO(), "Dolce far niente")
 
 if err != nil {
     fmt.Fprintln(os.Stderr, "error detecting language:", err)
@@ -36,8 +36,7 @@ if err != nil {
 }
 
 fmt.Fprintln(os.Stdout, "Language:", detections[0].Language)
-fmt.Fprintln(os.Stdout, "Reliable:", detections[0].Reliable)
-fmt.Fprintln(os.Stdout, "Confidence:", detections[0].Confidence)
+fmt.Fprintln(os.Stdout, "Score:", detections[0].Score)
 ```
 
 ### Single language code detection
@@ -45,7 +44,7 @@ fmt.Fprintln(os.Stdout, "Confidence:", detections[0].Confidence)
 If you need just a language code you can use `DetectCode`. It returns first detected language code.
 
 ```go
-language, err := client.DetectCode("Buenos dias señor")
+language, err := dl.DetectCode(context.TODO(), "Dolce far niente")
 
 if err != nil {
     fmt.Fprintln(os.Stderr, "error detecting language:", err)
@@ -64,7 +63,7 @@ To use batch detection just pass multiple texts to `DetectBatch` method.
 
 ```go
 texts := []string{"labas rytas", "good morning"}
-results, err := client.DetectBatch(texts)
+results, err := dl.DetectBatch(context.TODO(), texts)
 
 if err != nil {
     fmt.Fprintln(os.Stderr, "error detecting language:", err)
@@ -79,10 +78,10 @@ fmt.Fprintln(os.Stdout, "Second text language:", detections[1][0].Language)
 ### Getting your account status
 
 ```go
-result, err := client.UserStatus()
+result, err := dl.AccountStatus(context.TODO())
 
 if err != nil {
-    fmt.Fprintln(os.Stderr, "error getting user status:", err)
+    fmt.Fprintln(os.Stderr, "error getting account status:", err)
     os.Exit(1)
     return
 }
@@ -100,7 +99,7 @@ fmt.Fprintln(os.Stdout, "Date:", result.Date)
 ### Getting list supported languages
 
 ```go
-languages, err := client.Languages()
+languages, err := dl.Languages(context.TODO())
 
 if err != nil {
     fmt.Fprintln(os.Stderr, "error getting languages list:", err)
