@@ -9,7 +9,7 @@ type Language struct {
 }
 
 // Languages retrieves the list of supported languages
-func (c *Client) Languages() (out []*Language, err error) {
-	err = c.get(context.TODO(), "languages", &out)
+func (c *Client) Languages(ctx context.Context) (out []*Language, err error) {
+	err = c.get(ctx, "languages", &out)
 	return
 }

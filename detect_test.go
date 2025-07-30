@@ -1,13 +1,14 @@
 package detectlanguage_test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestDetect(t *testing.T) {
-	detections, err := client.Detect("labas rytas")
+	detections, err := client.Detect(context.TODO(), "labas rytas")
 
 	if assert.NoError(t, err) {
 		assert.Equal(t, "lt", detections[0].Language)
@@ -16,7 +17,7 @@ func TestDetect(t *testing.T) {
 }
 
 func TestDetectCode(t *testing.T) {
-	code, err := client.DetectCode("labas rytas")
+	code, err := client.DetectCode(context.TODO(), "labas rytas")
 
 	if assert.NoError(t, err) {
 		assert.Equal(t, "lt", code)
@@ -24,7 +25,7 @@ func TestDetectCode(t *testing.T) {
 }
 
 func TestDetectCodeFailure(t *testing.T) {
-	code, err := client.DetectCode(" ")
+	code, err := client.DetectCode(context.TODO(), " ")
 
 	assert.EqualError(t, err, "Language not detected")
 	assert.Equal(t, code, "")
@@ -32,7 +33,7 @@ func TestDetectCodeFailure(t *testing.T) {
 
 func TestDetectBatch(t *testing.T) {
 	query := []string{"labas rytas", "good morning"}
-	detections, err := client.DetectBatch(query)
+	detections, err := client.DetectBatch(context.TODO(), query)
 
 	if assert.NoError(t, err) {
 		assert.Equal(t, "lt", detections[0][0].Language)
