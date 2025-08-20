@@ -1,13 +1,14 @@
 package detectlanguage_test
 
 import (
+	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
-func TestUserStatus(t *testing.T) {
-	response, err := client.UserStatus()
+func TestAccountStatus(t *testing.T) {
+	response, err := client.AccountStatus(context.TODO())
 
 	if assert.NoError(t, err) {
 		assert.NotEmpty(t, response.Date)

@@ -16,7 +16,7 @@ const defaultUserAgent = "detectlanguage-go/" + Version
 const defaultTimeout = 10 * time.Second
 
 var apiBaseURL = &url.URL{
-	Scheme: "https", Host: "ws.detectlanguage.com", Path: "/0.2/",
+	Scheme: "https", Host: "ws.detectlanguage.com", Path: "/v3/",
 }
 
 // A Client provides an HTTP client for DetectLanguage API operations.
